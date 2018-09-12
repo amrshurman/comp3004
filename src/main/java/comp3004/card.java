@@ -14,18 +14,17 @@ public class card {
 
 	    int randomSuits = generator.nextInt(Suits.length);
 	    int randomRanks = generator.nextInt(Ranks.length);
-
+	    
 	    card(){
 	    	 Suit = Suits[randomSuits];
 	         Rank = Ranks[randomRanks];
+	         if (Rank.equals("10")) {
+	        	 Card = Suit.charAt(0) + "" + Rank.charAt(0) + Rank.charAt(1); 
+	         }
+	         else {
 	         Card = Suit.charAt(0) + "" + Rank.charAt(0);
-	         // Setting the color of the card in dependence of the suit
-	         if (Suit.equals("Hearts") || Suit.equals("Diamonds")) {
-	             Color = "Red";
 	         }
-	         else if (Suit.equals("Spades") || Suit.equals("Clubs")){
-	             Color = "Black";
-	         }
+	  
 	    }
 	
 	    public String getCard() {
@@ -39,23 +38,19 @@ public class card {
 	     public String getRank() {
 	         return Rank;
 	     }
-
-	     public String getColor() {
-	         return Color;
-	     }
 	     
 	public static int validateCard(String s) {
 		if (s.charAt(0)=='H') {
-			System.out.println("HEARTS card accquired");
+			//System.out.println("HEARTS card accquired");
 		}
 			else if (s.charAt(0)=='S') {
-				System.out.println("SPADES card accquired");
+				//System.out.println("SPADES card accquired");
 			}
 			else if (s.charAt(0)=='D') {
-				System.out.println("DIAMONDS card accquired");
+				//System.out.println("DIAMONDS card accquired");
 			}
 			else if (s.charAt(0)=='C') {
-				System.out.println("CLUBS card accquired");
+				//System.out.println("CLUBS card accquired");
 			}
 		
 		else { 
@@ -107,7 +102,7 @@ public class card {
 	public static int calculate(card card, int result) {
 		int value=validateCard(card.getCard());
 		
-		if ((value==1) && (value+result<11)) {
+		if ((value==1) && (value+result<12)) {
 			result=result+10;
 		}
 		result=result+value;

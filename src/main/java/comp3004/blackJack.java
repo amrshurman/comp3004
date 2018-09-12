@@ -1,7 +1,9 @@
 package comp3004;
 
+
 import java.util.*;
 
+	
 public class blackJack extends card{
 
 	public static void main(String[] args) {
@@ -19,14 +21,15 @@ public class blackJack extends card{
 	 resultD=calculate(cardD1,resultD);
 	 resultD=calculate(cardD2,resultD);
 	System.out.println("Dealer has drawn a " + cardD1.getCard()+ ", the other card he drew is hidden for now.");
-	System.out.println(card1.getCard());
-	System.out.println(card2.getCard());
+	System.out.println("Your first card acquired is "+card1.getCard());
+	System.out.println("Your second card acquired is " + card2.getCard());
 	result=calculate(card1,result);
 	result=calculate(card2,result);
 	System.out.println("Total : " + result);
 	while (true) {
 		if (result==21) {
 			System.out.println("You got BlackJack!");
+			break;
 		}
 		else if ((result<21)&&(resultD<21)){
 	System.out.println("Hit(H) or Stand(S)?");
@@ -63,7 +66,7 @@ public class blackJack extends card{
 	}
 	else if ((resultD<17)||(soft17==true)) {
 		card cardD3 = new card();
-		System.out.println(cardD3.getCard());
+		System.out.println("Dealer has drawn "+ cardD3.getCard());
 		resultD= (calculate(cardD3,resultD));
 		System.out.println("Dealer has a Total : " + resultD);
 	}
@@ -79,5 +82,5 @@ public class blackJack extends card{
 		}
 	}
 	}
-	}
-}
+	} 
+}  
