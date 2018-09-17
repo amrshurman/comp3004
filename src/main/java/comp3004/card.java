@@ -1,11 +1,18 @@
 package comp3004;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Random;
 
 public class card {
 	
   //got some inspiration from https://codereview.stackexchange.com/questions/125873/implementation-of-a-card-class-in-java 
-	 private String Suit, Rank, Color, Card;
+	 protected String Suit;
+	protected String Rank;
+	private String Color;
+	protected String Card;
 	 private static final Random generator = new Random();
 	 
 	    private static String[] Suits = {"Hearts", "Spades", "Diamonds", "Clubs"};
@@ -14,6 +21,17 @@ public class card {
 
 	    int randomSuits = generator.nextInt(Suits.length);
 	    int randomRanks = generator.nextInt(Ranks.length);
+	    
+	    card(String s){
+	    	if (s.length()<2) {
+	    		System.out.println("invalid card");
+	    	}
+	    	else {
+	    		Card=s;
+	    		Suit=s.charAt(0)+"";
+	    		Rank=s.charAt(1)+"";
+	    	}
+	    }
 	    
 	    card(){
 	    	 Suit = Suits[randomSuits];
@@ -38,6 +56,66 @@ public class card {
 	     public String getRank() {
 	         return Rank;
 	     }
+	    
+	     public static String translater(String s) {
+	    	 String x="";
+	    	 String y = "";
+	    	 if (s.charAt(0)=='H') {
+	 			x="Hearts";
+	 		}
+	 			else if (s.charAt(0)=='S') {
+	 				x="Spades";
+	 			}
+	 			else if (s.charAt(0)=='D') {
+	 				x="Diamonds";
+	 			}
+	 			else if (s.charAt(0)=='C') {
+	 				x="Clubs";
+	 			}
+	    	 if (s.charAt(1)=='A') {
+					y="Ace";
+				}
+				else if	(s.charAt(1)=='2') {
+						y="2";
+					}
+				else if	(s.charAt(1)=='3') {
+					y="3";
+				}
+				else if	(s.charAt(1)=='4') {
+					y="4";
+				}
+				else if	(s.charAt(1)=='5') {
+					y="5";
+				}
+				else if	(s.charAt(1)=='6') {
+					y="6";
+				}
+				else if	(s.charAt(1)=='7') {
+					y="7";
+				}
+				else if	(s.charAt(1)=='8') {
+					y="8";
+				}
+				else if	(s.charAt(1)=='9') {
+					y="9";
+				}
+				else if	((s.charAt(1)=='1')&&(s.charAt(2)=='0')) {
+					y="10";
+				}
+				else if (s.charAt(1)=='K') {
+					y="King";
+				}
+				else if (s.charAt(1)=='Q') {
+					y="Queen";
+				}
+				else if (s.charAt(1)=='J') {
+					y="Jack";
+				}
+	    	 
+	    	 return (y + " of " + x);
+				}
+
+	     
 	     
 	public static int validateCard(String s) {
 		if (s.charAt(0)=='H') {
@@ -89,7 +167,7 @@ public class card {
 			else if	((s.charAt(1)=='1')&&(s.charAt(2)=='0')) {
 				return 10;
 			}
-			else if ((s.charAt(0)!='K') || (s.charAt(0)!='Q') || (s.charAt(0)!='J'))
+			else if ((s.charAt(1)=='K') || (s.charAt(1)=='Q') || (s.charAt(1)=='J'))
 				return 10;
 			
 			else {
@@ -108,6 +186,16 @@ public class card {
 		result=result+value;
 		return result;
 	}
+
+	public static byte[] readFile(String fileName) throws IOException{
+    	Path file = Paths.get(fileName);
+    	byte[] data = null;
+    		
+    		data = Files.readAllBytes(file);
+    		
+    		return data;
+    	
+		}
 	
 	}
 	
