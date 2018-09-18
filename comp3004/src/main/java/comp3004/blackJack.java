@@ -30,7 +30,7 @@ public class blackJack extends card{
 	 if (input.equals("c")) {		 
 	 card card1 = new card();
 	 card card2 = new card();
-	
+	 
 	 card cardD1 = new card();
 	 card cardD2 = new card();
 	
@@ -290,7 +290,7 @@ public class blackJack extends card{
 			 split=true;
 			 normalD=false;
 		 }
-
+		 
 		 System.out.println("You drew " +translater(Card1str)+ " as your first card.");
 		 System.out.println("You drew " +translater(Card2str)+ " as your second card.");
 		 System.out.println("The Dealer drew " +translater(CardD1str)+ " as their first card.");

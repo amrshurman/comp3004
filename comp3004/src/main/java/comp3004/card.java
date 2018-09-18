@@ -176,6 +176,12 @@ public class card {
 			}
 		}
 	
+	public static boolean is21(int x) {
+		if (x==21) {
+			return true;
+		}
+		return false;
+	}
 	
 	public static int calculate(card card, int result) {
 		int value=validateCard(card.getCard());
