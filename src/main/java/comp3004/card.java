@@ -1,10 +1,12 @@
 package comp3004;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Random;
+import java.util.Scanner;
 
 public class card {
 	
@@ -176,6 +178,12 @@ public class card {
 			}
 		}
 	
+	public static boolean is21(int x) {
+		if (x==21) {
+			return true;
+		}
+		return false;
+	}
 	
 	public static int calculate(card card, int result) {
 		int value=validateCard(card.getCard());
@@ -197,6 +205,21 @@ public class card {
     	
 		}
 	
+	public static boolean isBJPWin(int x,int y) {
+		if ((x==21)&&(y!=21)) {
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean isBJDWin(int x) {
+		if (x==21) {
+			return true;
+		}
+		return false;
 	}
 	
+	}
+	
+
 

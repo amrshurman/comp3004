@@ -30,7 +30,7 @@ public class blackJack extends card{
 	 if (input.equals("c")) {		 
 	 card card1 = new card();
 	 card card2 = new card();
-	
+	 
 	 card cardD1 = new card();
 	 card cardD2 = new card();
 	
@@ -143,15 +143,24 @@ public class blackJack extends card{
 		}
 		
 	else {
-		System.out.println("You break");
+		 if ((card1.Rank.equals("A"))||(card2.Rank.equals("A"))) {
+			 result-=10;
+			 System.out.println("One of your aces got converted from an 11 to a 1.");
+			 System.out.println("Your total is now " + result);
+		 }
+			 else {
+				 
+				 System.out.println("You bust");
+				 breaked=true;
+					break;
+		 }
 
-		breaked=true;
-		break;
 	
 	}
 	}
 	while (true) {
 		if (breaked==true) {
+			System.out.println("Dealer's second card is revealed and is a " + cardD2.getCard());
 			System.out.println("Dealer wins because you bust.");
 			break;
 		}
@@ -160,7 +169,8 @@ public class blackJack extends card{
 		break;
 	}
 	else if ((resultD>result)&&(resultD<22)) {
-		System.out.println("Dealer wins with " + resultD);
+		System.out.println("Dealer's second card is revealed and is a " + cardD2.getCard());
+		System.out.println("Dealer stands and wins with " + resultD);
 		break;
 	}
 	else if ((splitD==true)&&((resultD+resultDS)<17)) {
@@ -182,6 +192,7 @@ public class blackJack extends card{
 				System.out.println("Dealer has a Total : " + resultD);
 			}
 		 else if (resultD>21) {
+			
 			 System.out.println("Dealer busts, you win");
 		 }
 		 else {
@@ -203,6 +214,7 @@ public class blackJack extends card{
 				System.out.println("Dealer has a Total : " + resultDS);
 			}
 		 else if (resultDS>21) {
+			 
 			 System.out.println("Dealer busts, you win");
 		 }
 		 else {
@@ -218,19 +230,23 @@ public class blackJack extends card{
 		System.out.println("Dealer has a Total : " + resultD);
 	}
 	else if (resultD>21) {
+		System.out.println("Dealer's second card is revealed and is a " + cardD2.getCard());
 		System.out.println("Dealer busts, you win");
 		break;
 	}
 	else {
 		System.out.println("Dealer stands with " + resultD);
 		if (((result>resultD)&&(result<22))||((resultS>resultD)&&(resultS<22))) {
+			System.out.println("Dealer's second card is revealed and is a " + cardD2.getCard());
 			System.out.println("You win by having a closer number to 21.");
 		break;
 		}
 		else if ((resultD==21)||(resultDS==21)) {
+			System.out.println("Dealer's second card is revealed and is a " + cardD2.getCard());
 			System.out.println("Dealer wins with blackjack!.");
 			break;
 		}
+		System.out.println("Dealer's second card is revealed and is a " + cardD2.getCard());
 		System.out.println("Dealer wins by having a closer number to 21.");
 		break;
 	}
@@ -290,7 +306,7 @@ public class blackJack extends card{
 			 split=true;
 			 normalD=false;
 		 }
-
+		 
 		 System.out.println("You drew " +translater(Card1str)+ " as your first card.");
 		 System.out.println("You drew " +translater(Card2str)+ " as your second card.");
 		 System.out.println("The Dealer drew " +translater(CardD1str)+ " as their first card.");
